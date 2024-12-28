@@ -1,0 +1,107 @@
+@import "../../../global.scss";
+ion-toolbar{
+  ion-back-button {
+    color: var(--system-white);
+  }
+  ion-title{
+    color: var(--system-white);
+    @extend .font-18;
+  }
+  .search-div{
+    height: 52px;
+    padding: 8px 20px!important;
+    ion-searchbar{
+      width: 100%;
+      height: 36px;
+      padding: 0px!important;
+    }
+  }
+}
+
+ion-content{
+  --background: var(--system-white);
+  ion-list{
+    padding: 10px 20px;
+    ion-card{
+      margin: 10px 0px;
+      .user {
+        padding: 15px;
+        color: var(--system-white);
+        background: var(--system-color);
+        .user-name{
+          display: flex;
+          justify-content: start;
+          p{
+            @extend .font-18;
+            font-weight: bold;
+            width: calc(100% - 24px);
+          }
+          .post-btn-more{
+            width: 24px;
+            height: 24px;
+            background: none;
+            padding: 3px;
+            color: var(--system-white);;
+          }
+        }
+        .user-info-row{
+          display: flex;
+          justify-content: start;
+          margin-top: 10px;
+          ion-icon{
+            width: 20px;
+            height: 20px;
+            margin-right: 10px;
+          }
+          .user-info{
+            width: calc(100% - 30px);
+            @extend .font-14;
+          }
+        }
+      }
+    }
+  }
+  .div-center{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    color: var(--system-color);
+  }
+}  
+
+ion-fab {
+  width: 200px;
+  height: 50px;
+  margin: 0px 12px 10px 0px;
+  border-radius: 50px;
+  display: flex;
+  justify-content: end;
+  .fab-add-button{
+    --background: var(--system-floating-btn-color);
+  }
+  ion-fab-list{
+    margin-bottom: 50px;
+    ion-fab-button[data-desc] {
+      position: relative;
+      --color: var(--system-floating-btn-color);
+      margin-bottom: 5px;
+      --background: var(--system-white);;
+    }
+    
+    ion-fab-button[data-desc]::after {
+      position: absolute;
+      content: attr(data-desc);
+      z-index: 1;
+      right: 55px;
+      bottom: 4px;
+      background: #106c82;
+      padding: 9px;
+      border-radius: 15px;
+      color: var(--system-white);;
+      box-shadow: 0 3px 5px -1px rgba(0,0,0,0.2), 0 6px 10px 0 rgba(0,0,0,0.14), 0 1px 18px 0 rgba(0,0,0,0.12);
+    }
+  }
+}

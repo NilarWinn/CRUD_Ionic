@@ -1,0 +1,101 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button text="" icon="chevron-back-outline" defaultHref="main/tabs/post-list"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{isEdit ? 'Edit' : 'Create'}} User</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="userForm" (ngSubmit)="onSubmit()" novalidate class="form"> 
+    <div class="form-item">
+      <ion-label>Name</ion-label>
+      <ion-input type="input" formControlName="name" [ngClass]="submitted && errorCtr.name.errors?.required ? 'input-border-error' : 'input-border'"></ion-input>
+    </div>
+    <span class="error" *ngIf="submitted && errorCtr.name.errors?.required">
+      Name is required.
+    </span>
+    
+    <div class="form-item">
+      <ion-label>Email Address</ion-label>
+      <ion-input type="email" formControlName="email" [ngClass]="submitted && (errorCtr.email.errors?.required || submitted && errorCtr.email.errors?.pattern) ? 'input-border-error' : 'input-border'"></ion-input>
+    </div>
+    <span class="error" *ngIf="submitted && errorCtr.email.errors?.required || submitted && errorCtr.email.errors?.pattern ">
+     {{ errorCtr.email.errors?.required ? 'Email address is required.' : 'Invalid email address format.'}}
+    </span>
+
+    <div *ngIf="!isEdit">
+      <div class="form-item" >
+        <ion-label>Password</ion-label>
+        <div [ngClass]="submitted && errorCtr.password.errors?.required || submitted && errorCtr.password.errors?.pattern? 'input-border-error' : 'input-border'" class="password-row">
+          <ion-input [type]="pwdShow? 'text' : 'password'" formControlName="password"></ion-input>
+          <ion-icon [name]="!pwdShow ? 'eye-off-outline' : 'eye-outline'" (click)="showPass(pwdShow, 'password')"></ion-icon>
+        </div>
+      </div>
+      <span class="error" *ngIf="submitted && (errorCtr.password.errors?.required || errorCtr.password.errors?.pattern)">
+        {{ errorCtr.password.errors?.required ? 'Password is required.' : 'Password is aleast 6 digit.'}}
+      </span>
+  
+      <div class="form-item" *ngIf="!isEdit">
+        <ion-label>Confirm Password</ion-label>
+        <div [ngClass]="submitted && errorCtr.confirmPwd.errors?.required || submitted && errorCtr.confirmPwd.errors?.pattern? 'input-border-error' : 'input-border'" class="password-row">
+          <ion-input [type]="confirmPwdShow? 'text' : 'password'" formControlName="confirmPwd"></ion-input>
+          <ion-icon [name]="!confirmPwdShow ? 'eye-off-outline' : 'eye-outline'" (click)="showPass(confirmPwdShow, 'confirmPassword')"></ion-icon>
+        </div>
+      </div>
+      <span class="error" *ngIf="submitted && (errorCtr.confirmPwd.errors?.required || errorCtr.confirmPwd.errors?.pattern)">
+        {{ errorCtr.confirmPwd.errors?.required ? 'Confirm password is required.' : 'Confirm password is aleast 6 digit.'}}
+      </span>
+      <span class="error" *ngIf="submitted && !matchingPasswords()">
+        Passwords do not match.
+      </span>
+    </div>
+
+    <div class="form-item">
+      <ion-label>Phone</ion-label>
+      <ion-input type="input" formControlName="phone" [ngClass]="submitted && (errorCtr.phone.errors?.required || errorCtr.phone.errors?.pattern)? 'input-border-error' : 'input-border'"></ion-input>
+    </div>
+    <span class="error" *ngIf="submitted && (errorCtr.phone.errors?.required || errorCtr.phone.errors?.pattern)">
+      {{ errorCtr.phone.errors?.required || errorCtr.phone.errors?.pattern ? 'Phone number is required.' : 'Invalid phone number format.'}}
+    </span>
+
+    <div class="form-item">
+      <ion-label>DOB</ion-label>
+      <ion-input type="date" formControlName="dob" class="input-border padding-7"></ion-input>
+    </div>
+
+    <div class="form-item">
+      <ion-label class="margin-bottom">Type</ion-label>
+      <ion-select [(ngModel)]="userType" formControlName="userType" (ionChange)="optionsType(user)" [interfaceOptions]="customPopoverOptions" interface="popover" placeholder="Select One" class="input-border padding-horizontal">
+        <ion-select-option [value]="user" *ngFor="let user of userList">{{user}}</ion-select-option> 
+      </ion-select>
+    </div>
+
+    <div class="form-item">
+      <ion-label class="margin-bottom">Address</ion-label>
+      <div class="input-border margin-top-10">
+        <textarea placeholder="Please enter address ..." formControlName="address"   ></textarea>
+      </div>
+    </div>
+
+    <div class="form-item">
+      <ion-label>Profile</ion-label>
+      <div class="form-item-profile-row">
+        <ion-input type="input" formControlName="profile" class="input-border" (click)="selectImage()" readonly placeholder="Choose Image"></ion-input>
+      </div>
+    </div>
+
+    <p (click)="goToChangePassword()" class="change-password" *ngIf="isEdit">Change Password</p>
+
+    <ion-row class="btn-row">
+      <ion-col class="left">
+        <ion-button type="submit" >Confirm</ion-button>
+      </ion-col>
+      <ion-col class="right">
+        <ion-button  (click) = "clear()">Clear</ion-button>
+      </ion-col>
+    </ion-row>
+  </form>
+ 
+</ion-content>

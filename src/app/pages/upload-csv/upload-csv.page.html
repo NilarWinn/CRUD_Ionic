@@ -1,0 +1,27 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Upload CSV</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button text="" icon="chevron-back-outline" defaultHref="main/tabs/post-list"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <div class="upload">
+    <ion-label>Import File Form:</ion-label>
+    <form [formGroup]="uploadForm" (ngSubmit)="onSubmit()" novalidate class="login-form"> 
+      <div class="upload-textfield">
+        <ion-input type="text" formControlName="fileName"  (click)="selectFile()" readonly ></ion-input>
+        <ion-icon name="cloud-upload" (click)="selectFile()"></ion-icon>
+      </div>
+    </form>
+    
+    <ion-row class="btn-row">
+      <ion-col>
+        <ion-button type="submit" (click)="importFile()">Import File</ion-button>
+      </ion-col>
+    </ion-row>
+  </div>
+</ion-content>

@@ -1,0 +1,61 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Post List</ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button autoHide="false"></ion-menu-button>
+    </ion-buttons>
+  </ion-toolbar>
+  <ion-toolbar *ngIf="isSearch">
+    <div class="search-div">
+      <ion-searchbar 
+      [showCancelButton]="false" cancelButtonText=""
+      [(ngModel)]="searchData"
+      (ionChange)="ionChange($event)"
+      (ionClear)="onClear($event)"></ion-searchbar>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content (touchstart)="touchstart($event)">
+  <ion-list *ngIf="postList.length > 0">
+    <ion-card *ngFor="let post of postList">
+      <div class="post">
+        <div class="post-title-div">
+          <p class="post-title">{{post.title}}</p>
+          <button ion-button (click)="presentPopover($event, post.id, post)" class="post-btn-more">
+            <img src="assets/icon/more-25.png">
+          </button>
+        </div>
+        <p class="post-description">{{post.description}}</p>
+        <p class="post-user-type">User {{post.create_user_id}}</p>
+        <p class="post-date">{{post.created_at}}</p>
+      </div>
+    </ion-card>
+  </ion-list>
+
+  <div class="div-center" *ngIf="postList.length == 0"> Not Found Post List.</div>
+  
+  <ion-infinite-scroll threshold="100px" (ionInfinite)="loadData($event)" *ngIf="postList.length > 0">
+    <ion-infinite-scroll-content
+      loadingSpinner="bubbles"
+      loadingText="Loading more data...">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+  
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed" #fabComponent>
+    <ion-fab-button class="fab-add-button" (click)="floatingBtn()">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+    <ion-fab-list side="top">
+      <ion-fab-button (touchstart)="exportCSV()" data-desc="Download">
+        <ion-icon name="download"></ion-icon>
+      </ion-fab-button>
+      <ion-fab-button (touchstart)="upload()" data-desc="Upload">
+        <ion-icon name="share"></ion-icon>
+      </ion-fab-button>
+      <ion-fab-button (touchstart)="search()" data-desc="Search">
+        <ion-icon name="search"></ion-icon>
+      </ion-fab-button>
+    </ion-fab-list>
+  </ion-fab>
+</ion-content>

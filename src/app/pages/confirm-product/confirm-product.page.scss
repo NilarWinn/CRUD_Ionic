@@ -1,0 +1,45 @@
+@import "../../../global.scss";
+ion-toolbar{
+  ion-back-button {
+    color: var(--system-white);
+  }
+  ion-title{
+    color: var(--system-white);
+    @extend .font-18;
+  }
+}
+
+ion-content {
+  ion-row{
+    padding: 20px 20px 0px;
+    .label{
+      @extend .font-16;
+      color: var(--system-color);
+    }
+    ion-toggle{
+      height: 25px;
+      width: 50px;
+      --background-checked: var(--system-color);
+      --handle-background-checked: var(--system-white);
+    }
+  }
+
+  .btn-row{
+    margin: 10px 0px 20px;
+    ion-button{
+        @extend .button-style;
+        @extend .font-18;
+        --border-radius: 8px;
+        --background: var(--system-color);
+    }
+    .left{
+        display: flex;
+        align-items: start;
+    }
+    .right{
+        display: flex;
+        justify-content: end;
+        align-items: end;
+    }
+  }
+}

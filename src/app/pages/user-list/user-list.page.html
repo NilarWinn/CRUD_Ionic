@@ -1,0 +1,68 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>User List</ion-title>
+     <ion-buttons slot="start">
+      <ion-back-button text="" icon="chevron-back-outline" defaultHref="main/tabs/post-list"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+  <ion-toolbar *ngIf="isSearch">
+    <div class="search-div">
+      <ion-searchbar 
+      [showCancelButton]="false" cancelButtonText=""
+      [(ngModel)]="searchData"
+      (ionChange)="ionChange($event)"
+      (ionClear)="onClear($event)"></ion-searchbar>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content  (touchstart)="touchstart($event)">
+  <ion-list *ngIf="userList.length > 0">
+    <ion-card *ngFor="let user of userList">
+      <div class="user">
+        <div class="user-name">
+          <p>{{user.name}}</p>
+          <button ion-button (click)="presentPopover($event, user.id, user)" class="post-btn-more">
+            <img src="assets/icon/more-25.png">
+          </button>
+        </div>
+        <div class="user-info-row">
+          <ion-icon name="mail"></ion-icon>
+          <p class="user-info">{{user.email}}</p>
+        </div>
+        <div class="user-info-row">
+          <ion-icon name="call"></ion-icon>
+          <p class="user-info"> {{user.phone}}</p>
+        </div>
+        <div class="user-info-row">
+          <ion-icon name="calendar"></ion-icon>
+          <p class="user-info"> {{user.dob}}</p>
+        </div>
+        <div class="user-info-row">
+          <ion-icon name="map"></ion-icon>
+          <p class="user-info"> {{user.address}}</p>
+        </div>
+      </div>
+    </ion-card>
+  </ion-list>
+
+  <div class="div-center" *ngIf="userList.length == 0"> Not Found User List.</div>
+
+  <ion-infinite-scroll threshold="100px" (ionInfinite)="loadData($event)" *ngIf="isLoadMore">
+    <ion-infinite-scroll-content
+      loadingSpinner="bubbles"
+      loadingText="Loading more data...">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed" #fabComponent>
+    <ion-fab-button class="fab-add-button" (click)="floatingBtn()">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+    <ion-fab-list side="top">
+      <ion-fab-button (touchstart)="search()" data-desc="Search">
+        <ion-icon name="search"></ion-icon>
+      </ion-fab-button>
+    </ion-fab-list>
+  </ion-fab>
+  
+</ion-content>

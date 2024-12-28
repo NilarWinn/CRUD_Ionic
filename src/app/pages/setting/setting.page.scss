@@ -1,0 +1,14 @@
+ion-content{
+    ion-list{
+        padding-top: 0px; 
+        padding-bottom: 0px;
+        ion-item{
+            --min-height: 35px;
+            --padding-start: 0px;
+            ion-label{
+                padding-left: 15px;
+            }
+        }
+    }
+}
+

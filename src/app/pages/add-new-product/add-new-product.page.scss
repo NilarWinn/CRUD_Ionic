@@ -1,0 +1,92 @@
+@import "../../../global.scss";
+ion-toolbar{
+  ion-back-button {
+    color: var(--system-white);
+  }
+  ion-title{
+    color: var(--system-white);
+    @extend .font-18;
+  }
+}
+
+ion-content{
+  .login-form{
+    padding: 0px 20px;
+    .login-form-item{
+      padding-top: 20px;
+      ion-label{
+        @extend .font-16;
+        color: var(--system-color);
+      }
+
+      ion-input,textarea{
+        height: 35px;
+        margin: 10px 0px;
+        --padding-start: 10px;
+        --padding-end: 10px;
+      }
+
+      .input-border-error{
+        @extend .input-border-error;
+      }
+      .input-border{
+        @extend .input-border;
+      }
+
+      .margin-top-10{
+        margin-top: 10px;   
+      }
+
+      textarea{
+        width: 100%;
+        min-height: 150px;
+        overflow: scroll;
+        resize: none;
+        position: relative;
+        -webkit-user-select: text !important;
+        padding: 0px 10px;
+        border: none;
+        background-color: transparent;
+        resize: none;
+        outline: none;
+      }
+
+      ion-item{
+        --padding-start: 0px;
+        --inner-padding-end: 0px;
+        --min-height: auto;
+        ion-toggle{
+          height: 25px;
+          width: 50px;
+          --background-checked: var(--system-color);
+          --handle-background-checked: var(--system-white);
+        }
+      }
+    }
+    .error{
+      margin-top: 5px;
+      @extend .font-14;
+      color: var(--system-error);
+    }
+
+    .btn-row{
+        text-align: center;
+        margin-top: 30px;
+        ion-button{
+            @extend .button-style;
+            @extend .font-18;
+            --border-radius: 5px;
+            --background: var(--system-color);
+        }
+    }
+    .left{
+      display: flex;
+      align-items: start;
+    }
+    .right{
+        display: flex;
+        justify-content: end;
+        align-items: end;
+    }
+  }
+}

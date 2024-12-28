@@ -1,0 +1,90 @@
+/*
+ * App Global CSS
+ * ----------------------------------------------------------------------------
+ * Put style rules here that you want to apply globally. These styles are for
+ * the entire app and not just one component. Additionally, this file can be
+ * used as an entry point to import other CSS/Sass files to be included in the
+ * output CSS.
+ * For more information on global stylesheets, visit the documentation:
+ * https://ionicframework.com/docs/layout/global-stylesheets
+ */
+
+/* Core CSS required for Ionic components to work properly */
+@import "~@ionic/angular/css/core.css";
+
+/* Basic CSS for apps built with Ionic */
+@import "~@ionic/angular/css/normalize.css";
+@import "~@ionic/angular/css/structure.css";
+@import "~@ionic/angular/css/typography.css";
+@import '~@ionic/angular/css/display.css';
+
+/* Optional CSS utils that can be commented out */
+@import "~@ionic/angular/css/padding.css";
+@import "~@ionic/angular/css/float-elements.css";
+@import "~@ionic/angular/css/text-alignment.css";
+@import "~@ionic/angular/css/text-transformation.css";
+@import "~@ionic/angular/css/flex-utils.css";
+
+*{
+    padding: 0px;
+    margin: 0px;
+}
+
+.font-14{
+    font-size: 14px;
+}
+
+.font-16{
+    font-size: 16px;
+}
+
+.font-18{
+    font-size: 18px;
+}
+
+.input-border{
+    border: 0.4px solid black;
+    border-radius: 5px;
+}
+
+.input-border-error{
+    border: 0.4px solid red;
+    border-radius: 5px;
+}
+
+.button-style {
+    width: 150px;
+    height: 35px;
+    text-transform: none;
+}
+
+.popover_setting {
+    --min-width: 100px !important;
+}
+
+ion-popover {
+    --width: 100px;
+    --offset-x: -40px;
+}
+.searchbar-input {
+    border-radius: 7px !important;
+    box-shadow: none !important;
+    color: #000 !important;
+    height: 40px!important;
+}
+
+.course-popover{
+    --width: 90%;
+    --offset-x: 0px;
+}
+
+ion-toolbar{
+    --background: var(--system-color);
+    --min-height: 50px;
+}
+
+.searchbar-input-container.sc-ion-searchbar-ios {
+    height: 36px;
+    background: white!important;
+    border-radius: 5px;
+}

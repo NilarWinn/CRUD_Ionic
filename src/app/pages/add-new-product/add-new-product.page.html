@@ -1,0 +1,49 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>{{isEdit ? 'Edit Post' : 'Create Post'}}</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button text="" icon="chevron-back-outline" defaultHref="main/tabs/post-list"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="postForm" (ngSubmit)="onSubmit()" novalidate class="login-form"> 
+    <div class="login-form-item">
+      <ion-label>Title</ion-label>
+      <ion-input placeholder="Enter post title here..." type="input" formControlName="title" [ngClass]="submitted && errorCtr.title.errors?.required ? 'input-border-error' : 'input-border'"></ion-input>
+    </div>
+    <span class="error" *ngIf="submitted && errorCtr.title.errors?.required">
+      Title is required.
+    </span>
+
+    <div class="login-form-item">
+      <ion-label>Description</ion-label>
+      <div [ngClass]="submitted && errorCtr.description.errors?.required ? 'input-border-error margin-top-10' : 'input-border margin-top-10'">
+        <textarea 
+        placeholder="Enter post description here..." formControlName="description"   >
+       </textarea>
+      </div>
+     
+     </div>
+    <span class="error" *ngIf="submitted && errorCtr.description.errors?.required">
+      Description is required.
+    </span>
+
+    <div class="login-form-item" *ngIf="isEdit">
+      <ion-item lines="none">
+        <ion-label>Status</ion-label>
+        <ion-toggle [checked]="status" (ionChange)="changeStatus($event)"></ion-toggle>
+      </ion-item>
+    </div>
+
+    <ion-row class="btn-row">
+      <ion-col class="left">
+        <ion-button type="submit" >Confirm</ion-button>
+      </ion-col>
+      <ion-col class="right">
+        <ion-button  (click) = "clear()">Clear</ion-button>
+      </ion-col>
+    </ion-row>
+  </form>
+</ion-content>

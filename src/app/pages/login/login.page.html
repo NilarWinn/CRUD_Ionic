@@ -1,0 +1,42 @@
+<ion-content>
+  <div class="login">
+    <div class="login-form">
+      <h2>
+         Login Form
+      </h2>
+      <form [formGroup]="myForm" (ngSubmit)="onSubmit()" novalidate> 
+        <div class="login-form-item">
+          <ion-label>Email</ion-label>
+          <ion-input type="email" formControlName="email" [ngClass]="submitted && errorCtr.email.errors?.required || submitted && errorCtr.email.errors?.pattern? 'input-border-error' : 'input-border'"></ion-input>
+        </div>
+        <span class="error" *ngIf="submitted && errorCtr.email.errors?.required">
+          Email is required.
+        </span>
+        <span class="error" *ngIf="submitted && errorCtr.email.errors?.pattern">
+          Enter valid email.
+        </span>
+
+        <div class="login-form-item">
+          <ion-label>Password</ion-label>
+          <div [ngClass]="submitted && errorCtr.password.errors?.required || submitted && errorCtr.password.errors?.pattern? 'input-border-error' : 'input-border'" class="password-row">
+            <ion-input [type]="passShow? 'text' : 'password'" formControlName="password" no></ion-input>
+            <ion-icon [name]="!passShow ? 'eye-off-outline' : 'eye-outline'" (click)="showPass()"></ion-icon>
+          </div>
+        </div>
+        <span class="error" *ngIf="submitted && errorCtr.password.errors?.required">
+          Password is required.
+        </span>
+        <span class="error" *ngIf="submitted && errorCtr.password.errors?.pattern">
+          Password is aleast 6 digit.
+        </span>
+        
+        <ion-row class="btn-row">
+          <ion-col>
+            <ion-button type="submit" >Login</ion-button>
+          </ion-col>
+        </ion-row>
+      </form>
+    </div>
+  </div>
+
+</ion-content>

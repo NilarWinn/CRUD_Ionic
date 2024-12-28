@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>{{isEdit ? 'Edit' : 'Create'}} Post Confirmation</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button text="" icon="chevron-back-outline" defaultHref="main/tabs/add-new-product"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div>
+    <ion-row>
+      <ion-col class="label" size="5">Title</ion-col>
+      <ion-col size="7">{{postTitle}}</ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col class="label" size="5">Description</ion-col>
+      <ion-col size="7">{{postDescription}}</ion-col>
+    </ion-row>
+    <ion-row *ngIf="isEdit" >
+      <ion-col class="label">Status</ion-col>
+      <ion-col> <ion-toggle [checked]="postStatus" (ionChange)="changeStatus($event)"></ion-toggle></ion-col>    
+    </ion-row>
+   
+    <ion-row class="btn-row">
+      <ion-col class="left"><ion-button type="submit" (click)="createPost()">{{isEdit ? 'Update' : 'Create'}}</ion-button></ion-col>
+      <ion-col class="right"><ion-button (click)="cancel()" >Cancel</ion-button></ion-col>
+    </ion-row>
+  </div>
+</ion-content>

@@ -1,0 +1,49 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>{{isEdit ? 'Edit' : 'Create'}} User Confirmation</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button text="" icon="chevron-back-outline" defaultHref="main/tabs/add-new-user"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="image-view" *ngIf="isEdit">
+    <img src="{{userImg}}" >
+  </div>
+  <div>
+    <ion-row>
+      <ion-col class="label" size="5">Name</ion-col>
+      <ion-col size="7">{{userData.name}}</ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col class="label" size="5">Email Address</ion-col>
+      <ion-col size="7">{{userData.email}}</ion-col>
+    </ion-row>
+    <ion-row *ngIf="!isEdit">
+      <ion-col class="label" size="5">Password</ion-col>
+      <ion-col size="7">{{password}}</ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col class="label" size="5">Type</ion-col>
+      <ion-col size="7">{{userData.type}}</ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col class="label" size="5">Phone</ion-col>
+      <ion-col size="7">{{userData.phone}}</ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col class="label" size="5">Date of Birth</ion-col>
+      <ion-col size="7">{{userData.dob}}</ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col class="label" size="5">Address</ion-col>
+      <ion-col size="7">{{userData.address}}</ion-col>
+    </ion-row>
+   
+    <ion-row class="btn-row">
+      <ion-col class="left"><ion-button type="submit" (click)="createUser()">{{isEdit ? 'Update' : 'Create'}}</ion-button></ion-col>
+      <ion-col class="right"><ion-button (click)="cancel()" >Cancel</ion-button></ion-col>
+    </ion-row>
+  </div>
+</ion-content>

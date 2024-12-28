@@ -1,0 +1,78 @@
+@import "../../../global.scss";
+ion-header{
+    ion-toolbar{
+        --padding-top: 0px;
+        --padding-bottom: 0px;
+        --padding-start: 0px;
+        --padding-end: 0px;
+    }
+    .header{
+        width: 100%;
+        height: 120px;
+        display: flex;
+        justify-content: start;
+        align-items: center;
+        padding: 0px 20px;
+        background: var(--system-color);
+        color: var(--system-white);
+        .header-image{
+            width: 70px;
+            height: 70px;
+            ion-icon{
+                width: 100%;
+                height: 100%;
+                border-radius: 50px;
+                background: var(--system-white);
+                color: gray;
+            }
+        }
+        .header-data{
+            margin-left: 15px;
+            .header-data-name{
+                @extend .font-18;
+                font-weight: bold;
+            }
+            .header-data-role{
+                @extend .font-16;
+                margin-top: 8px;
+            }
+        }
+    }
+}
+
+.header-ios::after {
+    left: 0;
+    bottom: -5px; 
+    background-position: left 0 top -2px;
+    position: absolute;
+    width: 100%;
+    height: 5px;
+    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAHBAMAAADzDtBxAAAAD1BMVEUAAAAAAAAAAAAAAAAAAABPDueNAAAABXRSTlMUCS0gBIh/TXEAAAAaSURBVAjXYxCEAgY4UIICBmMogMsgFLtAAQCNSwXZKOdPxgAAAABJRU5ErkJggg==);
+    background-repeat: repeat-x;
+    content: "";
+}
+
+ion-content {
+    --background: var(--system-color);
+    ion-list{
+        padding-top: 0px; 
+        padding-bottom: 0px;
+        ion-item{
+            --background: var(--system-color);
+            color: var(--system-white);
+            --border-color: solid var(--system-white) 1px;
+            --padding-start: 0px;
+            ion-icon{
+                width: 24px;
+                height: 24px;
+                border-radius: 50%;
+                margin: 0px 15px 0px 20px;
+                color: var(--system-white);
+            }
+            ion-label{
+                @extend .font-16;
+            }
+        }
+    }
+}
+

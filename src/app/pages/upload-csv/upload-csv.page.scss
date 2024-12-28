@@ -1,0 +1,51 @@
+@import "../../../global.scss";
+ion-toolbar{
+  ion-back-button {
+    color: var(--system-white);
+  }
+  ion-title{
+    color: var(--system-white);
+    @extend .font-18;
+  }
+}
+
+ion-content {
+  .upload{
+    padding: 20px;
+    ion-label{
+      @extend .font-16;
+        color: var(--system-color);
+    }
+    .upload-textfield {
+      height: 35px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding-right: 10px;
+      margin-top: 15px;
+      @extend .input-border;
+    }
+
+    ion-input{
+      height: 35px;
+      margin: 10px 0px;
+      --padding-start: 10px;
+      --padding-end: 10px;
+    }
+
+    .input-border-error{
+      @extend .input-border-error;
+    }
+
+    .btn-row{
+      text-align: center;
+      margin-top: 30px;
+      ion-button{
+          @extend .button-style;
+          @extend .font-18;
+          --border-radius: 8px;
+          --background: var(--system-color);
+      }
+    }
+  }
+}

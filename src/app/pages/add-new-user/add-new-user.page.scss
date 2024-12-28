@@ -1,0 +1,133 @@
+@import "../../../global.scss";
+ion-toolbar{
+  ion-back-button {
+    color: var(--system-white);
+  }
+  ion-title{
+    color: var(--system-white);
+    @extend .font-18;
+  }
+}
+
+ion-content{
+  .form{
+    padding: 0px 20px;
+    .form-item{
+      padding-top: 20px;
+      .password-row{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0px 10px 0px 0px;
+        margin-top: 10px;
+        ion-input{
+          height: 33px;
+          margin: 0px 0px 0px!important;
+          --padding-start: 10px;
+          --padding-end: 10px;
+        }
+        ion-icon{
+          width: 18px;
+          height: 18px;
+        }
+      }
+      ion-label{
+        @extend .font-16;
+        color: var(--system-color);
+      }
+
+      ion-input,textarea,ion-select{
+        height: 35px;
+        margin: 10px 0px 0px;
+        --padding-start: 10px;
+        --padding-end: 10px;
+      }
+      ion-select{
+        height: 35px;
+      }
+
+      .padding-7{
+        --padding-top: 7px;
+        --padding-start: 7px;
+      }
+      
+      .margin-top-10{
+        margin-top: 10px;   
+      }
+
+      textarea{
+        margin-bottom: 5px;
+        width: 100%;
+        min-height: 80px;
+        overflow: scroll;
+        resize: none;
+        position: relative;
+        -webkit-user-select: text !important;
+        padding: 0px 10px;
+        border: none;
+        background-color: transparent;
+        resize: none;
+        outline: none;
+      }
+
+      .input-border-error{
+          @extend .input-border-error;
+      }
+      .input-border{
+          @extend .input-border;
+      }
+      .padding-horizontal{
+        padding: 0px 10px;
+      }
+    }
+    .error{
+      margin-top: 5px;
+      @extend .font-14;
+      color: var(--system-error);
+    }
+    .choose-image-btn{
+      width: 100%;
+      --box-shadow: none;
+      --border-color: black;
+      --background: none;
+      --color: black;
+      --border-width: 0.4px!important;
+    }
+    .form-item-profile-row{
+      display: flex;
+      justify-content: start;
+      align-items: center;
+      img{
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        margin: 10px 20px 20px 0px;
+      }
+    }
+    .change-password{
+      @extend .font-16;
+      color: #3880ff;
+      margin-top: 20px;
+    }
+
+    .btn-row{
+        text-align: center;
+        margin: 30px 0px;
+        ion-button{
+            @extend .button-style;
+            @extend .font-18;
+            --border-radius: 5px;
+            --background: var(--system-color);
+        }
+    }
+    .left{
+      display: flex;
+      align-items: start;
+    }
+    .right{
+        display: flex;
+        justify-content: end;
+        align-items: end;
+    }
+  }
+}
